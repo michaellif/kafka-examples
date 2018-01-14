@@ -35,6 +35,8 @@ Then create a topic called clicks:
     $ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 \
       --partitions 1 --topic clicks
       
+>sudo docker-compose exec kafka kafka-topics --create --topic clicks --partitions 1 --replication-factor 1 --if-not-exists --zookeeper localhost:2181
+>sudo docker-compose exec kafka  kafka-topics --describe --topic clicks --zookeeper localhost:2181
 
 Then run the producer to produce 100 clicks:
 
@@ -42,4 +44,4 @@ Then run the producer to produce 100 clicks:
     
 You can validate the result by using the avro console consumer (part of the schema repository):
 
-    $ bin/kafka-avro-console-consumer --zookeeper localhost:2181 --topic clicks --from-beginning
+    $ ./bin/kafka-avro-console-consumer --zookeeper localhost:2181 --topic clicks --from-beginning
