@@ -12,12 +12,8 @@ import java.util.concurrent.ExecutionException;
 public class AvroClicksProducer {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        if (args.length != 2) {
-            System.out.println("Please provide command line arguments: numEvents schemaRegistryUrl");
-            System.exit(-1);
-        }
-        long events = Long.parseLong(args[0]);
-        String schemaUrl = args[1];
+        long events = 100;
+        String schemaUrl = "http://localhost:8081";
 
         Properties props = new Properties();
         // hardcoding the Kafka server URI for this example
